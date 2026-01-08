@@ -17,10 +17,10 @@ import java.util.concurrent.TimeUnit;
 
 public class FibonacciTest {
 
-//	@BeforeAll
-//	static public void beforeAll() {
-//		System.out.println("Executed before any test has been run");
-//	}
+	@BeforeAll
+	static public void beforeAll() {
+		assertEquals(Fibonacci.TYPE,"Iterative");
+	}
 //	
 //	@AfterAll
 //	static public void afterAll() {
@@ -39,7 +39,7 @@ public class FibonacciTest {
 
 	
 	@DisplayName("The fibonacci of 0 is 0")
-	@Test()
+	@Test
 	public void value_0_returns_0() throws InvalidNumberException {
 		assertEquals(0, Fibonacci.calculate(0));
 	}
@@ -60,21 +60,22 @@ public class FibonacciTest {
 		assertEquals(2971215073L, Fibonacci.calculate(47));
 	}
 	
-//	@Test
-//	public void value_92_returns_7540113804746346429() throws InvalidNumberException {
-//		assumingThat(
-//				Fibonacci.TYPE.equals("Iterative"),
-//				() -> assertEquals(7540113804746346429L, Fibonacci.calculate(92)));
-//	}
+	@Test
+	public void value_92_returns_7540113804746346429() throws InvalidNumberException {
+		assumingThat(
+				Fibonacci.TYPE.equals("Iterative"),
+				() -> assertEquals(7540113804746346429L, Fibonacci.calculate(92)));
+	}
 	
-	@Disabled
 	@Test
 	public void value_93_Throws_Exception() throws InvalidNumberException {
 		assertThrows(InvalidNumberException.class, () -> Fibonacci.calculate(93));
 	}
 	
-//	@Test
-//	public void value_Minus_1_Throws_Exception() throws InvalidNumberException {
-//		assertThrows(InvalidNumberException.class, () -> Fibonacci.calculate(-1));
-//	}
+	@Test
+	public void value_Minus_1_Throws_Exception() throws InvalidNumberException {
+		assertThrows(InvalidNumberException.class, () -> Fibonacci.calculate(-1));
+	}
+	
+	
 }
